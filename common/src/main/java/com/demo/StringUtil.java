@@ -6,8 +6,6 @@ import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * 字符串工具类
@@ -24,7 +22,7 @@ public class StringUtil {
             return false;
         }
         for (String param : params) {
-            if (param == null || "".equals(param.trim()) || "null".equals(param)) {
+            if (param == null || "".equals(param.trim())) {
                 return true;
             }
         }
@@ -46,10 +44,7 @@ public class StringUtil {
      * @return 分割后的
      */
     public static List<String> splitter(String str) {
-        if (str == null || str.isEmpty()) {
-            return new ArrayList<>();
-        }
-        return splitter(",", str);
+        return splitter(str, ",");
     }
 
     /**
@@ -59,10 +54,10 @@ public class StringUtil {
      * @return 分割后的
      */
     public static List<String> splitter(String str, String separator) {
-        if (str == null || str.isEmpty()) {
-            return new ArrayList<>();
+        if (str == null || separator == null) {
+            return null;
         }
-        if (separator == null || separator.isEmpty()) {
+        if ("".equals(str) || "".equals(separator)) {
             return new ArrayList<>();
         }
         return Lists.newArrayList(Splitter.on(separator).trimResults().omitEmptyStrings().split(str));

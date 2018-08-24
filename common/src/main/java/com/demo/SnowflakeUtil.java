@@ -1,7 +1,7 @@
 package com.demo;
 
 /**
- * Twitter_Snowflake<br>
+ * Twitter_Snowflake（雪花算法）
  * SnowFlake的结构如下(每部分用-分开):<br>
  * 0 - 0000000000 0000000000 0000000000 0000000000 0 - 00000 - 00000 - 000000000000 <br>
  * 1位标识，由于long基本类型在Java中是带符号的，最高位是符号位，正数是0，负数是1，所以id一般是正数，最高位是0<br>
@@ -12,7 +12,7 @@ package com.demo;
  * 加起来刚好64位，为一个Long型。<br>
  * SnowFlake的优点是，整体上按照时间自增排序，并且整个分布式系统内不会产生ID碰撞(由数据中心ID和机器ID作区分)，并且效率较高，经测试，SnowFlake每秒能够产生26万ID左右。
  */
-public class SnowflakeUtils {
+public class SnowflakeUtil {
 
     // ==============================Fields===========================================
     /**
@@ -93,7 +93,7 @@ public class SnowflakeUtils {
      * @param workerId     工作ID (0~31)
      * @param datacenterId 数据中心ID (0~31)
      */
-    private SnowflakeUtils(long workerId, long datacenterId) {
+    private SnowflakeUtil(long workerId, long datacenterId) {
         if (workerId > maxWorkerId || workerId < 0) {
             throw new IllegalArgumentException(String.format("worker Id can't be greater than %d or less than 0", maxWorkerId));
         }
@@ -168,7 +168,7 @@ public class SnowflakeUtils {
     }
 
     public static String random() {
-        SnowflakeUtils idWorker = new SnowflakeUtils(0, 0);
+        SnowflakeUtil idWorker = new SnowflakeUtil(0, 0);
         return idWorker.nextId() + "";
 
     }
@@ -179,7 +179,7 @@ public class SnowflakeUtils {
      * 测试
      */
     public static void main(String[] args) {
-        SnowflakeUtils idWorker = new SnowflakeUtils(0, 0);
+        SnowflakeUtil idWorker = new SnowflakeUtil(0, 0);
         for (int i = 0; i < 1000; i++) {
             long id = idWorker.nextId();
             System.out.println(Long.toBinaryString(id));

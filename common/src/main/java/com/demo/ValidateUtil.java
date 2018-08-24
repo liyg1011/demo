@@ -1,26 +1,25 @@
 package com.demo;
 
-import java.util.regex.Matcher;
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.regex.Pattern;
 
 /**
  * 参数校验工具类
  */
-public class ValidateUtils {
+public class ValidateUtil {
 
     /**
      * 判断是否是手机号码
-     * @param phone 手机号码
+     * @param mobile 手机号码
      * @return 结果
      */
-    public static boolean isMobile(String phone) {
-        if (StringUtil.isNotNull(phone)) {
-            Pattern p = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");
-            Matcher m = p.matcher(phone);
-            return m.matches();
-        } else {
+    public static boolean isMobile(String mobile) {
+        if (StringUtils.isEmpty(mobile)) {
             return false;
         }
+        Pattern p = Pattern.compile("^1[0-9]{10}$");
+        return p.matcher(mobile).matches();
     }
 
     /**
@@ -29,13 +28,12 @@ public class ValidateUtils {
      * @return 结果
      */
     public static boolean isEmail(String email) {
-        if (StringUtil.isNotNull(email)) {
-            Pattern p = Pattern.compile("^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$");
-            Matcher m = p.matcher(email);
-            return m.matches();
-        } else {
+        if (StringUtils.isEmpty(email)) {
             return false;
         }
+        Pattern p = Pattern
+                .compile("^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$");
+        return p.matcher(email).matches();
     }
 
     /**
@@ -44,6 +42,9 @@ public class ValidateUtils {
      * @return 结果
      */
     public static boolean isInteger(String str) {
+        if (StringUtils.isEmpty(str)) {
+            return false;
+        }
         Pattern pattern = Pattern.compile("[0-9]*");
         return pattern.matcher(str).matches();
     }
