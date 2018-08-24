@@ -10,7 +10,7 @@ import java.util.Map;
  * JavaBean 与 Map之间互转的工具类
  * 底层实际上依赖于fastJson
  */
-public class BeanToMapUtils {
+public class BeanToMapUtil {
     /**
      * 将一个 Map 对象转化为一个 JavaBean
      *

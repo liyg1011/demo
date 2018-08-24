@@ -14,7 +14,7 @@ public class ValidateUtils {
      * @return 结果
      */
     public static boolean isMobile(String phone) {
-        if (StringUtils.isNotNull(phone)) {
+        if (StringUtil.isNotNull(phone)) {
             Pattern p = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");
             Matcher m = p.matcher(phone);
             return m.matches();
@@ -29,7 +29,7 @@ public class ValidateUtils {
      * @return 结果
      */
     public static boolean isEmail(String email) {
-        if (StringUtils.isNotNull(email)) {
+        if (StringUtil.isNotNull(email)) {
             Pattern p = Pattern.compile("^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$");
             Matcher m = p.matcher(email);
             return m.matches();

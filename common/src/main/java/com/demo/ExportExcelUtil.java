@@ -14,7 +14,7 @@ import java.util.Map;
  * 导出excel工具类
  * TODO: 该工具类可优化
  */
-public class ExportExcelUtils {
+public class ExportExcelUtil {
 
     /**
      * 导出excel数据
@@ -25,7 +25,7 @@ public class ExportExcelUtils {
     public static HSSFWorkbook byBean(LinkedHashMap<String, Object> header, List<Object> body) {
         List<Map> list = new ArrayList<>();
         for (Object object : body) {
-            list.add(BeanToMapUtils.convertBean(object));
+            list.add(BeanToMapUtil.convertBean(object));
         }
         return byMap(header, list);
     }
