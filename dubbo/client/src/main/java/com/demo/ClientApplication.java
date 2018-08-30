@@ -1,6 +1,7 @@
 package com.demo;
 
 import com.demo.example.HelloService;
+import com.demo.speech.SpeechService;
 import org.springframework.boot.SpringApplication;
 
 import javax.annotation.PostConstruct;
@@ -13,9 +14,10 @@ public class ClientApplication {
 
 	@Reference(version = "1.0.0")
   	private HelloService demoService;
+	@Reference
+    private SpeechService speechService;
 
 	public static void main(String[] args) {
-		
 		SpringApplication.run(ClientApplication.class, args);
 	}
 	
@@ -23,5 +25,10 @@ public class ClientApplication {
     public void init() {
     	String sayHello = demoService.sayHello("world");
     	System.err.println(sayHello);
+    }
+
+    @PostConstruct
+    public void init1() {
+        speechService.convert("hello world");
     }
 }

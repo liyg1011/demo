@@ -6,13 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DubboServerApplication {
 
-
 	public static void main(String[] args) {
-		
 		// start embedded zookeeper server
 		new EmbeddedZooKeeper(2181, false).start();
-
-		
 		SpringApplication.run(DubboServerApplication.class, args);
 	}
 	
