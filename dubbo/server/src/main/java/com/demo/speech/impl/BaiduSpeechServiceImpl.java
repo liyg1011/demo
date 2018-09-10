@@ -12,7 +12,7 @@ import java.io.IOException;
 @Service
 public class BaiduSpeechServiceImpl implements SpeechService {
 
-    //设置APPID/AK/SK
+    // 设置APPID/AK/SK
     private static final String APP_ID = "9243268";
     private static final String API_KEY = "0qSq8wv4lUgqEGGkroCa70RY";
     private static final String SECRET_KEY = "f569b806a14e9eb5e47b868a885668a3";
