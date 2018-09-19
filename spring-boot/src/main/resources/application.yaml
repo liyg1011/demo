@@ -1,0 +1,12 @@
+server:
+  port: 8090
+
+spring:
+  profiles:
+    active: dev
+
+com:
+  demo:
+    cc: hello world
+    test: 张三
+    test1: ${random.int[10,20]}
